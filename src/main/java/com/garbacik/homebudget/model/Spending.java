@@ -1,4 +1,4 @@
-package com.arjuncodes.studentsystem.model;
+package com.garbacik.homebudget.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,14 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Wydatek {
+public class Spending {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String kwota;
+    private String value;
+    private String category;
 
-    public Wydatek() {
+
+    public Spending() {
+        super();
     }
 
     public int getId() {
@@ -32,11 +35,19 @@ public class Wydatek {
         this.name = name;
     }
 
-    public String getKwota() {
-        return kwota;
+    public String getValue() {
+        return value;
     }
 
-    public void setKwota(String address) {
-        this.kwota = address;
+    public void setValue(String address) {
+        this.value = address;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
