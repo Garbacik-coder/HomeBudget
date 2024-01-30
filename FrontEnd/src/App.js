@@ -1,13 +1,13 @@
 
 import './App.css';
 import Appbar from './components/Appbar'
-import Spending from './components/Spending';
+import Student from './components/Student'
 
 function App() {
   return (
     <div className="App">
     <Appbar/>
-    <Spending/>
+    <Student/>
    
     </div>
   );
