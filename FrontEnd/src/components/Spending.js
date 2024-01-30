@@ -15,15 +15,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Spending() {
     const paperStyle={padding:'50px 20px', width:600,margin:"20px auto"}
     const[name,setName]=useState('')
-    const[address,setAddress]=useState('')
+    const[value,setValue]=useState('')
+    const[category,setCategory]=useState('')
     const[spendings,setSpendings]=useState([])
      const classes = useStyles();
 
   const handleClick=(e)=>{
     e.preventDefault()
-    const spending={name,address}
+    const spending={name,value, category}
     console.log(spending)
-    fetch("http://localhost:8080/spending/add",{
+    fetch("http://localhost:8080/api/spending/add",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(spending)
@@ -34,7 +35,7 @@ export default function Spending() {
 }
 
 useEffect(()=>{
-  fetch("http://localhost:8080/spending/getAll")
+  fetch("http://localhost:8080/api/spendings")
   .then(res=>res.json())
   .then((result)=>{
     setSpendings(result);
@@ -54,8 +55,12 @@ useEffect(()=>{
       onChange={(e)=>setName(e.target.value)}
       />
       <TextField id="outlined-basic" label="Kwota" variant="outlined" fullWidth
-      value={address}
-      onChange={(e)=>setAddress(e.target.value)}
+      value={value}
+      onChange={(e)=>setValue(e.target.value)}
+      />
+      <TextField id="outlined-basic" label="Kategoria" variant="outlined" fullWidth
+      value={category}
+      onChange={(e)=>setCategory(e.target.value)}
       />
       <Button variant="contained" color="secondary" onClick={handleClick}>
   Dodaj
@@ -67,7 +72,7 @@ useEffect(()=>{
 
     <Paper elevation={3} style={paperStyle}>
 
-      {Spendings.map(spending=>(
+      {spendings.map(spending=>(
         <Paper elevation={6} style={{margin:"10px",padding:"15px", textAlign:"left"}} key={spending.id}>
          Id:{spending.id}<br/>
          Nazwa: {spending.name}<br/>
