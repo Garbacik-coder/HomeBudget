@@ -8,33 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/spending")
 @CrossOrigin
 public class SpendingController {
     @Autowired
     private SpendingService spendingService;
 
-    @PostMapping("/spending")
+    @PostMapping("/add")
     public Spending add(@RequestBody Spending spending){
         return spendingService.saveSpending(spending);
     }
 
-    @GetMapping("/spendings")
+    @GetMapping("/getAll")
     public List<Spending> list(){
         return spendingService.getAllSpendings();
     }
 
-    @GetMapping("/spending/{id}")
+    @GetMapping("/get/{id}")
     public Spending getSpendingById(@PathVariable(value = "id") Integer id){
         return spendingService.getSpendingById(id);
     }
 
-    @PutMapping("/spending")
+    @PutMapping("/update")
     public Spending updateSpending(@RequestBody Spending spending){
         return spendingService.updateSpending(spending);
     }
 
-    @DeleteMapping("/spending/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteSpendingById(@PathVariable(value = "id") Integer id){
         spendingService.deleteSpendingById(id);
     }

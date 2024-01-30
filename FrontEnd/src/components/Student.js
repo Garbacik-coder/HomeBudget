@@ -15,15 +15,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Student() {
     const paperStyle={padding:'50px 20px', width:600,margin:"20px auto"}
     const[name,setName]=useState('')
-    const[address,setAddress]=useState('')
-    const[students,setStudents]=useState([])
+    const[value,setValue]=useState('')
+    const[category,setCategory]=useState('')
+    const[spendings,setSpendings]=useState([])
      const classes = useStyles();
 
   const handleClick=(e)=>{
     e.preventDefault()
-    const student={name,address}
+    const student={name,value, category}
     console.log(student)
-    fetch("http://localhost:8080/student/add",{
+    fetch("http://localhost:8080/spending/add",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(student)
@@ -34,10 +35,10 @@ export default function Student() {
 }
 
 useEffect(()=>{
-  fetch("http://localhost:8080/student/getAll")
+  fetch("http://localhost:8080/spending/getAll")
   .then(res=>res.json())
   .then((result)=>{
-    setStudents(result);
+    setSpendings(result);
   }
 )
 },[])
@@ -49,15 +50,19 @@ useEffect(()=>{
 
     <form className={classes.root} noValidate autoComplete="off">
     
-      <TextField id="outlined-basic" label="Nazwa wydatku" variant="outlined" fullWidth
-      value={name}
-      onChange={(e)=>setName(e.target.value)}
-      />
-      <TextField id="outlined-basic" label="Kwota" variant="outlined" fullWidth
-      value={address}
-      onChange={(e)=>setAddress(e.target.value)}
-      />
-      <Button variant="contained" color="secondary" onClick={handleClick}>
+    <TextField id="outlined-basic" label="Nazwa wydatku" variant="outlined" fullWidth
+    value={name}
+    onChange={(e)=>setName(e.target.value)}
+    />
+    <TextField id="outlined-basic" label="Kwota" variant="outlined" fullWidth
+    value={value}
+    onChange={(e)=>setValue(e.target.value)}
+    />
+    <TextField id="outlined-basic" label="Kategoria" variant="outlined" fullWidth
+    value={category}
+    onChange={(e)=>setCategory(e.target.value)}
+    />
+    <Button variant="contained" color="secondary" onClick={handleClick}>
   Dodaj
 </Button>
     </form>
@@ -67,7 +72,7 @@ useEffect(()=>{
 
     <Paper elevation={3} style={paperStyle}>
 
-      {students.map(wydatek=>(
+      {spendings.map(wydatek=>(
         <Paper elevation={6} style={{margin:"10px",padding:"15px", textAlign:"left"}} key={wydatek.id}>
          Id:{wydatek.id}<br/>
          Nazwa: {wydatek.name}<br/>
