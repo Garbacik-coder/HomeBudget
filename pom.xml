@@ -8,10 +8,10 @@
 		<version>2.5.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.arjuncodes</groupId>
-	<artifactId>studentsystem</artifactId>
+	<groupId>com.garbacik</groupId>
+	<artifactId>homebudget</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>studentsystem</name>
+	<name>homebudget</name>
 	<description>Full stack application using Spring Boot and react</description>
 	<properties>
 		<java.version>11</java.version>

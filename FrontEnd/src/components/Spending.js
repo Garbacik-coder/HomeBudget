@@ -12,21 +12,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Student() {
+export default function Spending() {
     const paperStyle={padding:'50px 20px', width:600,margin:"20px auto"}
     const[name,setName]=useState('')
     const[address,setAddress]=useState('')
-    const[students,setStudents]=useState([])
+    const[spendings,setSpendings]=useState([])
      const classes = useStyles();
 
   const handleClick=(e)=>{
     e.preventDefault()
-    const student={name,address}
-    console.log(student)
-    fetch("http://localhost:8080/student/add",{
+    const spending={name,address}
+    console.log(spending)
+    fetch("http://localhost:8080/spending/add",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
-      body:JSON.stringify(student)
+      body:JSON.stringify(spending)
 
   }).then(()=>{
     console.log("New cost added")
@@ -34,10 +34,10 @@ export default function Student() {
 }
 
 useEffect(()=>{
-  fetch("http://localhost:8080/student/getAll")
+  fetch("http://localhost:8080/spending/getAll")
   .then(res=>res.json())
   .then((result)=>{
-    setStudents(result);
+    setSpendings(result);
   }
 )
 },[])
@@ -67,11 +67,11 @@ useEffect(()=>{
 
     <Paper elevation={3} style={paperStyle}>
 
-      {students.map(wydatek=>(
-        <Paper elevation={6} style={{margin:"10px",padding:"15px", textAlign:"left"}} key={wydatek.id}>
-         Id:{wydatek.id}<br/>
-         Nazwa: {wydatek.name}<br/>
-         Kwota: {wydatek.kwota}
+      {Spendings.map(spending=>(
+        <Paper elevation={6} style={{margin:"10px",padding:"15px", textAlign:"left"}} key={spending.id}>
+         Id:{spending.id}<br/>
+         Nazwa: {spending.name}<br/>
+         Kwota: {spending.kwota}
 
         </Paper>
       ))
