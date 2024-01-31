@@ -17,14 +17,17 @@ public class Spending {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "The unique ID of the spending")
     private int id;
+
     @ApiModelProperty(notes = "The name of the spending")
     private String name;
+
     @ApiModelProperty(notes = "The cash value of the spending")
     private Integer value;
+
     @ApiModelProperty(notes = "The category of the spending")
     private String category;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-mm-dd")
     @ApiModelProperty(notes = "The date of the spending")
     private Date date;
 

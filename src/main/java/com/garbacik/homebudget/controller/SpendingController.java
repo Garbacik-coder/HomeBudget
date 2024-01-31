@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -35,6 +36,12 @@ public class SpendingController {
     public Spending getSpendingById(@PathVariable(value = "id")
                                         @ApiParam(value = "ID of spending", required = true) Integer id){
         return spendingService.getSpendingById(id);
+    }
+
+    @ApiOperation(value = "Get spending by month and year")
+    @GetMapping("/getByDate")
+    public List<Spending> getSpendingByMonth(@RequestBody Date date){
+        return spendingService.getSpendingByMonth(date);
     }
 
     @ApiOperation(value = "Update spending existing in database")
