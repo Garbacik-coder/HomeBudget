@@ -2,6 +2,7 @@ package com.garbacik.homebudget.service;
 
 import com.garbacik.homebudget.model.Spending;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface SpendingService {
 
     Spending getSpendingById(Integer id);
 
-    List<Spending> getSpendingByMonth(Date date);
+    List<Spending> getSpendingByMonth(LocalDate date);
 }

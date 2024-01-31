@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -27,9 +28,9 @@ public class Spending {
     @ApiModelProperty(notes = "The category of the spending")
     private String category;
 
-    @JsonFormat(pattern="yyyy-mm-dd")
+    @JsonFormat(pattern="dd-MM-yyyy")
     @ApiModelProperty(notes = "The date of the spending")
-    private Date date;
+    private LocalDate date;
 
     public Spending() {
         super();
@@ -67,11 +68,11 @@ public class Spending {
         this.category = category;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }

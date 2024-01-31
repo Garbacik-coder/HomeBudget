@@ -5,6 +5,7 @@ import com.garbacik.homebudget.repository.SpendingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,7 +48,7 @@ public class SpendingServiceImpl implements SpendingService {
     }
 
     @Override
-    public List<Spending> getSpendingByMonth(Date date) {
+    public List<Spending> getSpendingByMonth(LocalDate date) {
         List<Spending> allSpendings = spendingRepository.findAll();
         List<Spending> newSpendings = new ArrayList<>();
         for (Spending s : allSpendings){

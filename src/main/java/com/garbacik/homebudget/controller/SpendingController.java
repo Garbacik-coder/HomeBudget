@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -39,8 +40,8 @@ public class SpendingController {
     }
 
     @ApiOperation(value = "Get spending by month and year")
-    @GetMapping("/getByDate")
-    public List<Spending> getSpendingByMonth(@RequestBody Date date){
+    @PostMapping("/getByDate")
+    public List<Spending> getSpendingByMonth(@RequestBody LocalDate date){
         return spendingService.getSpendingByMonth(date);
     }
 
